@@ -31,7 +31,7 @@ public class ProductRepositoryImpl implements ProductRepository {
     }
 
     @Override
-    public void save(Product product) {
+    public Long save(Product product) {
 
         ProductEntity productEntity = ProductEntity.builder()
                 .description(product.getDescription())
@@ -40,5 +40,6 @@ public class ProductRepositoryImpl implements ProductRepository {
                 .quantity(product.getQuantity())
                 .build();
         this.productEntityRepository.save(productEntity);
+        return productEntity.getId();
     }
 }

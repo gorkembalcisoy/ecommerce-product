@@ -4,6 +4,7 @@ import com.ecommerce.product.common.DomainException;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
 
 @AllArgsConstructor
@@ -11,6 +12,7 @@ import org.apache.commons.lang3.StringUtils;
 @Builder
 public class Product {
 
+    @Setter
     private Long id;
     private String name;
     private String description;

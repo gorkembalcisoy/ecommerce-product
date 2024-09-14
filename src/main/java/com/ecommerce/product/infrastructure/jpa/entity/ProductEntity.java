@@ -20,9 +20,11 @@ public class ProductEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // TODO create db index
     @Column(nullable = false)
     private String name;
 
+    // TODO create db index
     @Column(nullable = false, length = 1000)
     private String description;
 
