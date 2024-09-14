@@ -22,7 +22,7 @@ public class Product {
         if (StringUtils.isAllEmpty(this.name) || (this.name.length() < 3 || this.name.length() > 255)) {
             throw new DomainException("A valid name value is required.");
         }
-        if (StringUtils.isAllEmpty(this.description) || (this.description.length() < 10 || this.description.length() > 1000)) {
+        if (StringUtils.isAllEmpty(this.description) || (this.description.length() < 5 || this.description.length() > 1000)) {
             throw new DomainException("A valid description value is required.");
         }
         if (this.price < 0) {
