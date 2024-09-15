@@ -1,6 +1,6 @@
 package com.ecommerce.product.domain.model;
 
-import com.ecommerce.product.common.DomainException;
+import com.ecommerce.product.domain.exception.DomainException;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,7 +17,7 @@ public class Product {
     private String name;
     private String description;
     private double price;
-    private int quantity;
+    private int stockQuantity;
 
     public void isValid() throws DomainException {
 
@@ -30,8 +30,8 @@ public class Product {
         if (this.price < 0) {
             throw new DomainException("Price must be greate than zero.");
         }
-        if (this.quantity < 0) {
-            throw new DomainException("Quantity must be greate than zero.");
+        if (this.stockQuantity < 0) {
+            throw new DomainException("Stock quantity must be greate than zero.");
         }
     }
 }

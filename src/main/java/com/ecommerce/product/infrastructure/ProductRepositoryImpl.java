@@ -2,8 +2,8 @@ package com.ecommerce.product.infrastructure;
 
 import com.ecommerce.product.domain.model.Product;
 import com.ecommerce.product.domain.repository.ProductRepository;
-import com.ecommerce.product.infrastructure.jpa.ProductEntityRepository;
-import com.ecommerce.product.infrastructure.jpa.entity.ProductEntity;
+import com.ecommerce.product.infrastructure.jpa.ProductJpaEntityRepository;
+import com.ecommerce.product.infrastructure.jpa.entity.ProductJpaEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,32 +14,32 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ProductRepositoryImpl implements ProductRepository {
 
-    private final ProductEntityRepository productEntityRepository;
+    private final ProductJpaEntityRepository productJpaEntityRepository;
 
     @Override
     public List<Product> findAll() {
 
-        return this.productEntityRepository
+        return this.productJpaEntityRepository
                 .findAll()
                 .stream()
-                .map(productEntity -> new Product(productEntity.getId(),
-                        productEntity.getName(),
-                        productEntity.getDescription(),
-                        productEntity.getPrice(),
-                        productEntity.getQuantity()))
+                .map(productJpaEntity -> new Product(productJpaEntity.getId(),
+                        productJpaEntity.getName(),
+                        productJpaEntity.getDescription(),
+                        productJpaEntity.getPrice(),
+                        productJpaEntity.getStockQuantity()))
                 .collect(Collectors.toList());
     }
 
     @Override
     public Long save(Product product) {
 
-        ProductEntity productEntity = ProductEntity.builder()
+        ProductJpaEntity productJpaEntity = ProductJpaEntity.builder()
                 .description(product.getDescription())
                 .name(product.getName())
                 .price(product.getPrice())
-                .quantity(product.getQuantity())
+                .stockQuantity(product.getStockQuantity())
                 .build();
-        this.productEntityRepository.save(productEntity);
-        return productEntity.getId();
+        this.productJpaEntityRepository.save(productJpaEntity);
+        return productJpaEntity.getId();
     }
 }

@@ -1,20 +1,18 @@
 package com.ecommerce.product.infrastructure.jpa.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Data
 @Entity
 @Table(name = "PRODUCT")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductEntity {
+@Getter
+public class ProductJpaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,5 +30,5 @@ public class ProductEntity {
     private double price;
 
     @Column(nullable = false)
-    private int quantity;
+    private int stockQuantity;
 }
