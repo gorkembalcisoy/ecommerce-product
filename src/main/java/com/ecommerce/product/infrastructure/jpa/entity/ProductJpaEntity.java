@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "PRODUCT")
+@Table(name = "PRODUCT", indexes = {@Index(name="product_name_indx", columnList = "name"), @Index(name="product_desc_indx", columnList = "description")})
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,12 +15,10 @@ public class ProductJpaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // TODO create db index
     @Setter
     @Column(nullable = false)
     private String name;
 
-    // TODO create db index
     @Setter
     @Column(nullable = false, length = 1000)
     private String description;
