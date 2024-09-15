@@ -34,4 +34,12 @@ public class Product {
             throw new DomainException("Stock quantity must be greate than zero.");
         }
     }
+
+    public boolean hasEnoughQuantity(int orderQuantity) {
+        return orderQuantity <= this.stockQuantity;
+    }
+
+    public void updateStockQuantity(int orderQuantity) {
+        this.stockQuantity = this.stockQuantity - orderQuantity;
+    }
 }

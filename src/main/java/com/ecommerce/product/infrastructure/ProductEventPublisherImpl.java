@@ -15,4 +15,14 @@ public class ProductEventPublisherImpl implements ProductEventPublisher {
     public void publishProductCreatedEvent(String productId) {
         this.productEventKafkaProducer.sendProductCreatedEvent(productId);
     }
+
+    @Override
+    public void publishProductStockQuantityInsufficientEvent(String orderId) {
+        this.productEventKafkaProducer.sendProductStockQuantityInsufficientEvent(orderId);
+    }
+
+    @Override
+    public void publishProductStockDecreasedSuccessfullyEvent(String orderId) {
+        this.productEventKafkaProducer.sendProductStockDecreasedSuccessfullyEvent(orderId);
+    }
 }

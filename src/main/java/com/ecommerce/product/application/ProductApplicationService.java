@@ -34,4 +34,19 @@ public class ProductApplicationService {
         product.setId(this.productRepository.save(product));
         this.productEventPublisher.publishProductCreatedEvent(product.getId().toString());
     }
+
+    public void updateStockQuantity(String message) {
+        String[] msgParts = message.split("_");
+        Long productId = Long.parseLong(msgParts[0]);
+        long orderId = Long.parseLong(msgParts[1]);
+        int orderQuantity = Integer.parseInt(msgParts[2]);
+        Product product = this.productRepository.findById(productId);
+        if (!product.hasEnoughQuantity(orderQuantity)) {
+            this.productEventPublisher.publishProductStockQuantityInsufficientEvent(Long.toString(orderId));
+        } else {
+            product.updateStockQuantity(orderQuantity);
+            this.productRepository.update(product);
+            this.productEventPublisher.publishProductStockDecreasedSuccessfullyEvent(Long.toString(orderId));
+        }
+    }
 }
