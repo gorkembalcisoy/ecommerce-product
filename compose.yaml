@@ -2,10 +2,10 @@ version: '3.8'
 
 services:
   app:
-    image: 'ecommerce-product-module:latest'
+    image: 'ecommerce-product-image:latest'
     build:
       context: .
-    container_name: ecommerce-product-module
+    container_name: ecommerce-product-image
     depends_on:
       - db
     ports:
