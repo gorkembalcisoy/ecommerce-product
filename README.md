@@ -1,4 +1,4 @@
-# Online Sipariş Sistemi - Product Microservice Modülü
+# Online Sipariş Sistemi - Product Microservice Modülü...
 
 Bu servis, Spring boot üzerinde DDD kullanılarak geliştirilmiştir.
 application, domain ve infrastructure katmanları bulunmaktadır.
